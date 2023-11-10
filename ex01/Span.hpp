@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:24:09 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/11/08 11:35:46 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:33:11 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,26 @@
 class Span
 {
     private:
-        std::vector<int>    span;
+        std::vector<int>    _container;
+        unsigned int        _maxSize;
     public:
         Span();                                 // default constructor
         Span(unsigned int N);                   // param constructor
         Span(const Span& inst);                 // copy constructor
         Span&   operator=(const Span& inst);    // copy assignment operator    
-        ~Span()                                 // destructor
+        ~Span();                                // destructor
+
+        // subject
+        void            addNumber(int number);
+        int             shortestSpan() const;
+        int             longestSpan() const;
+
+
+        // my own
+        void            fillContainer();
+        unsigned int    getMaxSize() const;
+        void            printContainer() const;
+        void            checkContainer() const;
 };
 
 # endif

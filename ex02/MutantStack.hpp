@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 12:37:37 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/11/10 12:31:52 by ddyankov         ###   ########.fr       */
+/*   Created: 2023/11/10 10:31:04 by ddyankov          #+#    #+#             */
+/*   Updated: 2023/11/10 12:00:29 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+# ifndef MUTANTSTACK_HPP
+# define MUTANTSTACK_HPP
 
 # include <iostream>
-# include <algorithm>
-# include <ctime>
-# include <stdexcept>
-# include <vector>
+# include <stack>
 # include <deque>
-# include <list>
 
 # define URED "\033[4;31m"
 # define RED "\033[1;91m"
@@ -30,14 +26,20 @@
 # define LINE  std::cout << "-------------------------" << std::endl;
 
 template < typename T >
-void   easyFind(const T& ctr, int toFind)
+class   MutantStack : public std::stack<T>
 {
-    typename T::const_iterator it;
-    
-    it = find(ctr.begin(), ctr.end(), toFind);
-    if (it == ctr.end())
-        throw std::out_of_range("Number was not found in the container");
-    std::cout << GREEN << "Number was found" << RESET << std::endl;
-}
+    public:
+        typedef typename std::deque<T>::iterator iterator;
+
+        iterator    begin()
+        {
+            return this->c.begin();
+        }
+        
+        iterator    end()
+        {
+            return this->c.end();
+        }
+};
 
 # endif
