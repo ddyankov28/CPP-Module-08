@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:24:18 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/11/10 10:06:36 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/11/11 13:45:48 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,16 @@ void    Span::addNumber(int number)
 void    Span::fillContainer()
 {
     std::srand(time(NULL));
+    std::vector<int>    vector(_maxSize);
     for(unsigned int i = 0; i < _maxSize; i++)
     {
         int number = rand();
-        _container.push_back(number);
+        vector[i] = number;
     }
-    /*for (unsigned int i = 0; i < _maxSize; i++)
+    if (_container.size() + std::distance(vector.begin(), vector.end()) > _maxSize)
+        throw std::out_of_range("There is no place for more elements in the container");
+    _container.insert(_container.begin(), vector.begin(), vector.end());
+    /*for (unsigned int i = 0; i < _container.size(); i++)
         std::cout << _container[i] << " ";
     std::cout << std::endl;
     std::vector<int>::const_iterator it;

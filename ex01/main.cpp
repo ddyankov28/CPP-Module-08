@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:23:52 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/11/10 10:19:14 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:21:37 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,11 @@ int main()
     {
         Span    big(20000);
         std::cout << "The Max Size of the container is " << big.getMaxSize() << std::endl;
-        big.fillContainer();
-        std::cout << "Shortest Span is: " << big.shortestSpan() << std::endl;
-        std::cout << "Longest Span is: " << big.longestSpan() << std::endl;
         try
         {
-            big.addNumber(1);
+            big.fillContainer();
+            std::cout << "Shortest Span is: " << big.shortestSpan() << std::endl;
+            std::cout << "Longest Span is: " << big.longestSpan() << std::endl;
         }
         catch(const std::exception& e)
         {
