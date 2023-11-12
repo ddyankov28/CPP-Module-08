@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:31:04 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/11/11 15:29:22 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/11/12 16:18:14 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,35 @@ template < typename T >
 class   MutantStack : public std::stack<T>
 {
     public:
-        typedef typename    std::deque<T>::iterator                 iterator;
-        typedef typename    std::deque<T>::const_iterator           const_iterator;
-        typedef typename    std::deque<T>::reverse_iterator         reverse_iterator;
-        typedef typename    std::deque<T>::const_reverse_iterator   const_reverse_iterator;
+
+        MutantStack()   //  --- Default Constructor --- //
+        {
+            std::cout << GREEN << "MutantStack Default constructor called" << RESET << std::endl;
+        }
+
+        MutantStack(const MutantStack& inst)   // --- Copy Constructor --- //
+        {
+            *this = inst;
+            std::cout << YELLOW << "MutantStack Copy constructor called" << RESET << std::endl;
+        }
+        
+        MutantStack&    operator=(const MutantStack& inst) // --- Copy assignment operator --- //
+        {
+            if (this != &inst)
+                this->c = inst.c;
+            std::cout << CYAN << "MutantStack Copy assignment operator called" << RESET << std::endl;
+            return *this;
+        }
+
+        ~MutantStack()  // --- Destructor --- //
+        {
+            std::cout << RED << "MutantStack Destructor called" << RESET << std::endl;
+        }
+        
+        typedef typename    std::stack<T>::container_type::iterator                 iterator;
+        typedef typename    std::stack<T>::container_type::const_iterator           const_iterator;
+        typedef typename    std::stack<T>::container_type::reverse_iterator         reverse_iterator;
+        typedef typename    std::stack<T>::container_type::const_reverse_iterator   const_reverse_iterator;
 
         iterator    begin()
         {   return this->c.begin(); }
@@ -57,7 +82,7 @@ class   MutantStack : public std::stack<T>
         {   return this->c.rbegin();    }
 
         const_reverse_iterator  rend() const
-        {   return this->c.rbegin();    }
+        {   return this->c.rend();    }
 };
 
 # endif
