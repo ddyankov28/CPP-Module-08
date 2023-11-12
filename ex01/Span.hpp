@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:24:09 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/11/11 12:10:27 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/11/12 15:12:54 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SPAN_HPP
 
 # include <iostream>
-# include <vector>
+# include <set>
 # include <algorithm>
 
 # define URED "\033[4;31m"
@@ -28,7 +28,7 @@
 class Span
 {
     private:
-        std::vector<int>    _container;
+        std::multiset<int>    _container;
         unsigned int        _maxSize;
     public:
         Span();                                 // default constructor

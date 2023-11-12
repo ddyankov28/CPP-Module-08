@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:23:52 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/11/11 14:21:37 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/11/12 16:44:29 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,16 @@ int main()
         }
     }LINE;
     {
-        Span    two(5);
+        Span    three(5);
+        Span    two(three);
         std::cout << "The Max Size of the container is " << two.getMaxSize() << std::endl;
         try
         {
-            two.addNumber(10);
-            two.addNumber(15);
-            two.addNumber(21);
-            two.addNumber(42);
             two.addNumber(54);
+            two.addNumber(52);
+            two.addNumber(6);
+            two.addNumber(1);
+            two.addNumber(4);
             two.printContainer();
             std::cout << "Shortest Span is: " << two.shortestSpan() << std::endl;
             std::cout << "Longest Span is: " << two.longestSpan() << std::endl;

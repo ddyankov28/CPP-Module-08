@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:24:18 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/11/11 13:45:48 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/11/12 16:33:31 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,28 @@ void    Span::addNumber(int number)
 {
     if (_container.size() == _maxSize)
         throw std::out_of_range("There is no place for more elements in the container");
-    _container.push_back(number);
+    _container.insert(number);
 }
 
 void    Span::fillContainer()
 {
     std::srand(time(NULL));
-    std::vector<int>    vector(_maxSize);
+    std::multiset<int>    multiset;
     for(unsigned int i = 0; i < _maxSize; i++)
     {
         int number = rand();
-        vector[i] = number;
+        multiset.insert(number);
     }
-    if (_container.size() + std::distance(vector.begin(), vector.end()) > _maxSize)
+    if (_container.size() + std::distance(multiset.begin(), multiset.end()) > _maxSize)
         throw std::out_of_range("There is no place for more elements in the container");
-    _container.insert(_container.begin(), vector.begin(), vector.end());
-    /*for (unsigned int i = 0; i < _container.size(); i++)
-        std::cout << _container[i] << " ";
+    _container.insert(multiset.begin(), multiset.end());
+    
+    /*std::multiset<int>::const_iterator    itBegin;
+    std::multiset<int>::const_iterator    itEnd = multiset.end();
+    for(itBegin = multiset.begin(); itBegin != itEnd; itBegin++)
+        std::cout << *itBegin << " ";
     std::cout << std::endl;
-    std::vector<int>::const_iterator it;
+    std::multiset<int>::const_iterator it;
     it = std::min_element(_container.begin(), _container.end());
     int smallest = *it;
     it = std::max_element(_container.begin(), _container.end());
@@ -78,12 +81,17 @@ void    Span::fillContainer()
 int Span::shortestSpan() const
 {
     checkContainer();
-    int shortestSpan = abs(_container.at(0) - _container.at(1));
-    std::vector<int>::const_iterator it;
-    for (it = _container.begin(); it < _container.end(); it++)
+    std::multiset<int>::const_iterator  itZero = _container.begin();
+    std::multiset<int>::const_iterator  itBegin = _container.begin();
+    int shortestSpan = abs(*itZero - *(++itBegin));
+    unsigned int a = 0;
+    while (a < _container.size())
     {
-        if (shortestSpan > abs(*it - *(it + 1)))
-            shortestSpan = abs(*it - *(it + 1));
+        itBegin = itZero;
+        if (shortestSpan > abs(*itZero - *(++itBegin)))
+            shortestSpan = abs(*itZero - *itBegin);
+        itZero++;
+        a++;
     }
     return shortestSpan;
 }
@@ -93,7 +101,7 @@ int Span::longestSpan() const
     checkContainer();
     int smallest;
     int biggest;
-    std::vector<int>::const_iterator it; 
+    std::multiset<int>::const_iterator it; 
     
     it = std::min_element(_container.begin(), _container.end());
     smallest = *it;
@@ -110,8 +118,14 @@ void    Span::checkContainer() const
 
 void    Span::printContainer() const
 {
-    for (int i = 0; i < static_cast<int>(_container.size()); i++)
-        std::cout  << "Container[" << i + 1 << "] = " << _container.at(i) << " " << std::endl;
+    std::multiset<int>::const_iterator  itBegin;
+    std::multiset<int>::const_iterator  itEnd = _container.end();
+    int i = 0;
+    for(itBegin = _container.begin(); itBegin != itEnd; itBegin++)
+    {
+        std::cout  << "Container[" << i << "] = " << *itBegin << " " << std::endl;
+        i++;
+    }
 }
 
 unsigned int Span::getMaxSize() const

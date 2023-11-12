@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:37:21 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/11/08 11:18:58 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/11/12 14:38:36 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ int main()
     }
     for (unsigned int i = 0; i < intVector.size(); i++)
         std::cout << intVector.at(i) << " ";
-    std::cout << std::endl;
+    std::cout << std::endl;LINE;
     for (unsigned int i = 0; i < intDeque.size(); i++)
-        std::cout << intVector.at(i) << " ";
-    std::cout << std::endl;
+        std::cout << intDeque.at(i) << " ";
+    std::cout << std::endl;LINE;
     intList.sort();
     for (it = intList.begin(); it != intList.end(); it++)
     {
         std::cout << *it << " ";
     }
-    std::cout << std::endl;
+    std::cout << std::endl;LINE;
     try
     {
         easyFind(intVector, 42);

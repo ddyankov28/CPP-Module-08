@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:37:37 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/11/10 12:31:52 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/11/12 14:45:41 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void   easyFind(const T& ctr, int toFind)
     it = find(ctr.begin(), ctr.end(), toFind);
     if (it == ctr.end())
         throw std::out_of_range("Number was not found in the container");
-    std::cout << GREEN << "Number was found" << RESET << std::endl;
+    std::cout << GREEN << "The Number " << toFind << "was found at position "; 
+    std::cout << std::distance(ctr.begin(), it) << RESET << std::endl;
 }
 
 # endif
