@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:24:18 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/11/12 16:33:31 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/11/13 09:42:11 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,14 @@ int Span::shortestSpan() const
     std::multiset<int>::const_iterator  itZero = _container.begin();
     std::multiset<int>::const_iterator  itBegin = _container.begin();
     int shortestSpan = abs(*itZero - *(++itBegin));
-    unsigned int a = 0;
-    while (a < _container.size())
+    unsigned int i = 0;
+    while (i < _container.size())
     {
         itBegin = itZero;
         if (shortestSpan > abs(*itZero - *(++itBegin)))
             shortestSpan = abs(*itZero - *itBegin);
         itZero++;
-        a++;
+        i++;
     }
     return shortestSpan;
 }

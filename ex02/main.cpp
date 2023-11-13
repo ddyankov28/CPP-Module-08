@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:30:54 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/11/12 16:40:55 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/11/13 09:44:22 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main()
 {   
-    MutantStack<int>    s1;
+    MutantStack<int>    s1;LINE;
 
     for(int i = 0; i < 10; i++)
         s1.push(i * 3);
